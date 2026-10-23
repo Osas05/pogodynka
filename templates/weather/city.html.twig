@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Weather in {{ location.name }}, {{ location.country }}{% endblock %}
+
+{% block body %}
+<main>
+    <h1>Weather in {{ location.name }}, {{ location.country }}</h1>
+
+    <ul>
+        {% for forecast in forecasts %}
+            <li>{{ forecast.date|date('d.m.Y') }}: {{ forecast.temperature }}°C</li>
+        {% endfor %}
+    </ul>
+</main>
+{% endblock %}
