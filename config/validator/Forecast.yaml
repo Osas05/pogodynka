@@ -1,0 +1,38 @@
+App\Entity\Forecast:
+    properties:
+        date:
+            - NotNull:
+                groups: [new, edit]
+        temperature:
+            - NotNull:
+                groups: [new, edit]
+            - Range:
+                min: -100
+                max: 60
+                groups: [new, edit]
+        pressure:
+            - NotNull:
+                groups: [new, edit]
+            - Range:
+                min: 800
+                max: 1100
+                groups: [new]
+        wind:
+            - NotNull:
+                groups: [new, edit]
+            - PositiveOrZero:
+                groups: [new, edit]
+        humidity:
+            - NotNull:
+                groups: [new, edit]
+            - Range:
+                min: 0
+                max: 100
+                groups: [new, edit]
+            - Range:
+                min: 10
+                max: 90
+                groups: [new]
+        location:
+            - NotNull:
+                groups: [new, edit]

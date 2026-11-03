@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Forecast{% endblock %}
+
+{% block body %}
+    <h1>Forecast</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ forecast.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ forecast.date ? forecast.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Temperature</th>
+                <td>{{ forecast.temperature }}</td>
+            </tr>
+            <tr>
+                <th>Pressure</th>
+                <td>{{ forecast.pressure }}</td>
+            </tr>
+            <tr>
+                <th>Wind</th>
+                <td>{{ forecast.wind }}</td>
+            </tr>
+            <tr>
+                <th>Humidity</th>
+                <td>{{ forecast.humidity }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_forecast_index') }}">back to list</a>
+
+    <a href="{{ path('app_forecast_edit', {'id': forecast.id}) }}">edit</a>
+
+    {{ include('forecast/_delete_form.html.twig') }}
+{% endblock %}
