@@ -6,10 +6,31 @@
 <main>
     <h1>Weather in {{ location.name }}, {{ location.country }}</h1>
 
-    <ul>
-        {% for forecast in forecasts %}
-            <li>{{ forecast.date|date('d.m.Y') }}: {{ forecast.temperature }}°C</li>
-        {% endfor %}
-    </ul>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temperature</th>
+                <th>Pressure</th>
+                <th>Wind</th>
+                <th>Humidity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for forecast in forecasts %}
+                <tr>
+                    <td>{{ forecast.date|date('d.m.Y') }}</td>
+                    <td>{{ forecast.temperature }}°C</td>
+                    <td>{{ forecast.pressure }} hPa</td>
+                    <td>{{ forecast.wind }}</td>
+                    <td>{{ forecast.humidity }}%</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">No forecasts found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </main>
 {% endblock %}
