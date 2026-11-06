@@ -44,6 +44,11 @@
                     <a class="nav-link" href="{{ path('app_forecast_index') }}">
                         Forecasts
                     </a>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                    {% else %}
+                        <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+                    {% endif %}
                 </div>
             </div>
         </nav>
