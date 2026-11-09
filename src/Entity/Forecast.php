@@ -74,6 +74,11 @@ class Forecast
         return $this;
     }
 
+    public function getFahrenheit(): float
+    {
+        return (float) $this->getTemperature() * 9 / 5 + 32;
+    }
+
     public function getPressure(): ?int
     {
         return $this->pressure;

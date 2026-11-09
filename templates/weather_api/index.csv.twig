@@ -1,0 +1,4 @@
+city,country,date,celsius,fahrenheit
+{% for forecast in measurements -%}
+{{ city }},{{ country }},{{ forecast.date|date('Y-m-d') }},{{ forecast.temperature }},{{ forecast.fahrenheit }}
+{% endfor -%}
