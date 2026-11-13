@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Text Input{% endblock %}
+
+{% block body %}
+    <h1>Text Submission Form</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit">Submit</button>
+    {{ form_end(form) }}
+
+    {% if submittedText is not empty %}
+        <h2>Submitted Text:</h2>
+        <p>{{ submittedText }}</p>
+        <p>{{ submittedText|raw }}</p>
+    {% endif %}
+{% endblock %}

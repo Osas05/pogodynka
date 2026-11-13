@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}External Weather API{% endblock %}
+
+{% block body %}
+    <h1>Weather Forecast - Open-Meteo</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.latitude) }}
+        {{ form_row(form.longitude) }}
+        <button type="submit">Get Forecast</button>
+    {{ form_end(form) }}
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+
+    {% if weatherData is not null %}
+        <h1>Weather Forecast</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Max Temperature (°C)</th>
+                    <th>Min Temperature (°C)</th>
+                    <th>Precipitation (mm)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for date in weatherData.daily.time %}
+                    <tr>
+                        <td>{{ date }}</td>
+                        <td>{{ weatherData.daily.temperature_2m_max[loop.index0] }}</td>
+                        <td>{{ weatherData.daily.temperature_2m_min[loop.index0] }}</td>
+                        <td>{{ weatherData.daily.precipitation_sum[loop.index0] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
